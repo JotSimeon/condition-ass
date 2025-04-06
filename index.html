@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    input,
+    button,
+    textarea {
+        margin: 10px;
+        padding: 10px;
+        width: 90%;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h2>1</h2>
+        <input type="text" placeholder="Address" id="address">
+        <div id="newAddress"></div>
+        <button onclick="processAddress()">process</button>
+
+        <h2>2</h2>
+        <input type="password" placeholder="Enter your password" id="passwordInput" value="">
+        <div id="result"></div>
+        <button onclick="validatePassword()">Validate</button>
+
+        <h2>3</h2>
+        <input type="number" id="items" placeholder="Enter number of items">
+        <div id="itemsOutput"></div>
+        <button onclick="checkEvenItems()">check</button>
+
+        <h2>4</h2>
+        <input type="text" id="studentAnswer" placeholder="Put you answer">
+        <div id="correctAnswer"></div>
+        <button onclick="checkAnswer()">Check Answer</button>
+
+        <h2>5</h2>
+        <input type="number" id="luggageWeight" placeholder="Enter Luggage Weight (kg)">
+        <div id="luggageOutput"></div>
+        <button onclick="checkLuggage()">check Luggage</button>
+
+    </div>
+</body>
+<script>
+    function processAddress() {
+        if (address.value == "") {
+            newAddress.innerHTML = ("input can't be empty")
+        }
+        else {
+            var letter = (address.value)
+            var lowercase = letter.toLowerCase()
+            newAddress.innerHTML = lowercase;
+        }
+    }
+    function validatePassword() {
+        var password = (passwordInput.value)
+        if (passwordInput.value == "") {
+            result.innerHTML = ("input can't be empty")
+        } else if (password.length < 8) {
+            result.innerHTML = ("Password must be at least 8 characters long.")
+        } else if (!/[A-Z]/.test(password)) {
+            result.innerHTML = ("Password must contain at least one uppercase letter.")
+        } else if (!/[a-z]/.test(password)) {
+            result.innerHTML = ("Password must contain at least one lowercase letter.")
+        } else if (!/[0-9]/.test(password)) {
+            result.innerHTML = ("Password must contain at least one number.")
+        } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+            result.innerHTML = ("password must contain at least one character")
+        }
+        else {
+            result.innerHTML = ("Strong password!")
+        }
+    }
+    function checkEvenItems() {
+        var check = (items.value)
+        if (items.value == "") {
+            itemsOutput.innerHTML = ("input can't be empty")
+        } else if (check % 2 == 0) {
+            itemsOutput.innerHTML = ("Congratulations! You get a discount!")
+        }
+        else {
+            itemsOutput.innerHTML = ("Sorry, no discount. Buy one more item to qualify!")
+        }
+    }
+    function checkAnswer() {
+        var Answer = (studentAnswer.value)
+        var rightAnswer = "ogomosho"
+        if (studentAnswer.value == "") {
+            correctAnswer.innerHTML = ("input can't be empty")
+        } else if (Answer.toLowerCase() == rightAnswer.toLowerCase()) {
+            correctAnswer.innerHTML = ("correct!")
+        } else {
+            correctAnswer.innerHTML = ("Incorrect!")
+        }
+    }
+    function checkLuggage() {
+        var weight = (luggageWeight.value)
+        var weight1 = (20);
+        var weight2 = (30);
+        if (luggageWeight.value == "") {
+            luggageOutput.innerHTML = ("input can't be empty")
+        } else if (weight <= weight1) {
+            luggageOutput.innerHTML = ("UnderWeight")
+        } else if (weight < weight2) {
+            luggageOutput.innerHTML = ("Allowed")
+        } else {
+            luggageOutput.innerHTML = ("overweight")
+        }
+    }
+</script>
+
+</html>
